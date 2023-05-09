@@ -6,13 +6,22 @@ public class BatalhaNaval {
 
         int[][] matriz = new int[21][21];
 
-        naviosMatriz(matriz);
+        System.out.println("Insira a porcentagem de navios (entre 0 e 100): ");
+        int porcentagem = sc.nextInt();
 
+        naviosMatriz(matriz, porcentagem / 100.0);
+
+
+        //naviosMatriz(matriz);
+        // naviosMatriz.escolhe(matriz);
         while (true){
             System.out.println("|---------------------------------------------------|");
             System.out.println("          - Digite um numero de 1 até 20 -");
             System.out.println("|---------------------------------------------------|");
             mostraMatriz(matriz);
+
+
+
 
             System.out.println("Digite a linha (horizontal): ");
             int linha = sc.nextInt();
@@ -93,10 +102,10 @@ public class BatalhaNaval {
         }
         sc.close();
     }
-    private static void naviosMatriz(int[][] matriz) {
-        for (int i = 1; i < 21; i++){//
-            for (int j = 1; j < 21; j++){ //
-                if (Math.random() < 0.2){ // 0.2 eh a porcentagem de navios
+    private static void naviosMatriz(int[][] matriz, double probabilidadeNavio) {
+        for (int i = 1; i < 21; i++){
+            for (int j = 1; j < 21; j++){
+                if (Math.random() < probabilidadeNavio){
                     matriz[i][j] = 1;
                 }
             }
